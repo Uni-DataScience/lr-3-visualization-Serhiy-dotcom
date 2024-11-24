@@ -10,11 +10,21 @@ def create_scatter_plot(data):
 
     Parameters:
     data (DataFrame): A DataFrame containing 'x' and 'y' columns.
-    """
-    fig, _ = plt.subplots()
-    pass
-    return fig
 
+    Returns:
+    matplotlib.figure.Figure: The generated figure.
+    """
+    sns.set_theme(style="whitegrid")
+
+    fig, ax = plt.subplots(figsize=(8, 6))
+    sns.scatterplot(data=data, x='x', y='y', ax=ax, color="blue", s=50)
+
+    ax.set_xlabel("Variable X", fontsize=12)
+    ax.set_ylabel("Variable Y", fontsize=12)
+    ax.set_title("Scatter Plot of X vs Y", fontsize=14)
+
+    plt.tight_layout()
+    return fig
 
 
 # Example data
@@ -22,4 +32,7 @@ data = pd.DataFrame({
     'x': np.random.rand(50),
     'y': np.random.rand(50)
 })
-create_scatter_plot(data)
+fig = create_scatter_plot(data)
+
+fig.savefig('plots/scatter_plot.png')
+plt.show()
