@@ -13,21 +13,17 @@ def plot_distribution(data):
     Returns:
     matplotlib.figure.Figure: The generated figure.
     """
-    # Count the frequency of each category
     counter = collections.Counter(data)
     categories = list(counter.keys())
     frequencies = list(counter.values())
 
-    # Create the bar chart
     fig, ax = plt.subplots(figsize=(8, 6))
     bars = ax.bar(categories, frequencies, color=['blue', 'green', 'orange'])
 
-    # Add labels and title
     ax.set_xlabel("Category", fontsize=12)
     ax.set_ylabel("Frequency", fontsize=12)
     ax.set_title("Frequency of Categorical Data", fontsize=14)
 
-    # Add frequency labels on top of each bar
     for bar in bars:
         height = bar.get_height()
         ax.text(
